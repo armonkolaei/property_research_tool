@@ -1,0 +1,62 @@
+function formatCurrency(value) {
+    return `$${parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+function updateTotals() {
+    const rows = document.querySelectorAll('#asset-table-body tr');
+    let totalCurrentValue = 0;
+    let totalLoanAmount = 0;
+
+    rows.forEach(row => {
+        const currentValue = parseFloat(row.children[1].textContent.replace(/[^0-9.-]+/g, '')) || 0;
+        const loanAmount = parseFloat(row.children[2].textContent.replace(/[^0-9.-]+/g, '')) || 0;
+
+        totalCurrentValue += currentValue;
+        totalLoanAmount += loanAmount;
+    });
+
+    document.getElementById('total-current-value').textContent = formatCurrency(totalCurrentValue);
+    document.getElementById('total-loan-amount').textContent = formatCurrency(totalLoanAmount);
+
+    const borrowingPercentage = parseFloat(document.getElementById('borrowing-percentage').value) || 0;
+    const potentialBorrowingPower = (totalCurrentValue * (borrowingPercentage / 100)) - totalLoanAmount;
+
+    document.getElementById('potential-borrowing-power').textContent = formatCurrency(potentialBorrowingPower);
+}
+
+document.getElementById('add-asset').addEventListener('click', function() {
+    const assetName = document.getElementById('asset-name').value;
+    const currentValue = document.getElementById('current-value').value;
+    const loanAmount = document.getElementById('loan-amount').value;
+
+    if (assetName && currentValue && loanAmount) {
+        const tableBody = document.getElementById('asset-table-body');
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${assetName}</td>
+            <td>${formatCurrency(currentValue)}</td>
+            <td>${formatCurrency(loanAmount)}</td>
+            <td><button class="delete-btn">🗑️</button></td>
+        `;
+
+        tableBody.appendChild(row);
+
+        // Add event listener to the delete button
+        row.querySelector('.delete-btn').addEventListener('click', function() {
+            tableBody.removeChild(row);
+            updateTotals();
+        });
+
+        // Clear input fields
+        document.getElementById('asset-name').value = '';
+        document.getElementById('current-value').value = '';
+        document.getElementById('loan-amount').value = '';
+
+        updateTotals();
+    } else {
+        alert('Please fill out all fields.');
+    }
+});
+
+document.getElementById('borrowing-percentage').addEventListener('input', updateTotals);

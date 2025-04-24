@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Asset Manager</h1>
+        <div class="form-container">
+            <label for="asset-name">Asset Name:</label>
+            <input type="text" id="asset-name" placeholder="Enter asset name">
+
+            <label for="current-value">Current Value:</label>
+            <input type="number" id="current-value" placeholder="Enter current value">
+
+            <label for="loan-amount">Remaining Loan Amount:</label>
+            <input type="number" id="loan-amount" placeholder="Enter loan amount">
+
+            <button id="add-asset">Add Asset</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Asset Name</th>
+                    <th>Current Value</th>
+                    <th>Remaining Loan Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="asset-table-body">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+
+        <div class="totals-container">
+            <h2>Totals</h2>
+            <p>Total Current Value: <span id="total-current-value">0</span></p>
+            <p>Total Remaining Loan Amount: <span id="total-loan-amount">0</span></p>
+            <label for="borrowing-percentage">Borrowing Percentage: (Usually Banks will allow max up to 80%)</label>
+            <input type="number" id="borrowing-percentage" value="80" min="0" max="100">
+            <p>Potential Borrowing Power: <span id="potential-borrowing-power">0</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
