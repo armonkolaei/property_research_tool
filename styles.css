@@ -66,3 +66,54 @@ th, td {
 th {
     background-color: #f4f4f4;
 }
+
+.property-form-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.property-form-container h2 {
+    text-align: center;
+}
+
+.property-form-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.property-form-container input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.property-form-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.property-form-container button:hover {
+    background-color: #0056b3;
+}
+
+.suggested-rent-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}

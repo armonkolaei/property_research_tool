@@ -60,3 +60,41 @@ document.getElementById('add-asset').addEventListener('click', function() {
 });
 
 document.getElementById('borrowing-percentage').addEventListener('input', updateTotals);
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get form elements
+    const propertyPriceInput = document.getElementById('property-price');
+    const propertyTaxInput = document.getElementById('property-tax');
+    const renovationCostInput = document.getElementById('renovation-cost');
+    const maintenanceCostInput = document.getElementById('maintenance-cost');
+    const condoFeeInput = document.getElementById('condo-fee');
+    const otherCostsInput = document.getElementById('other-costs');
+    const suggestedRentSpan = document.getElementById('suggested-rent');
+
+    // Function to calculate suggested rent
+    function calculateSuggestedRent() {
+        const propertyPrice = parseFloat(propertyPriceInput.value) || 0;
+        const propertyTax = parseFloat(propertyTaxInput.value) || 0;
+        const renovationCost = parseFloat(renovationCostInput.value) || 0;
+        const maintenanceCost = parseFloat(maintenanceCostInput.value) || 0;
+        const condoFee = parseFloat(condoFeeInput.value) || 0;
+        const otherCosts = parseFloat(otherCostsInput.value) || 0;
+
+        // Calculate total monthly costs
+        const totalMonthlyCosts = maintenanceCost + condoFee + (propertyTax / 12) + (renovationCost / 12) + otherCosts;
+
+        // Suggested rent is 1.2 times the total monthly costs to ensure profitability
+        const suggestedRent = totalMonthlyCosts * 1.2;
+
+        // Update the suggested rent display
+        suggestedRentSpan.textContent = suggestedRent.toFixed(2);
+    }
+
+    // Add event listeners to form inputs to calculate rent in real-time
+    propertyPriceInput.addEventListener('input', calculateSuggestedRent);
+    propertyTaxInput.addEventListener('input', calculateSuggestedRent);
+    renovationCostInput.addEventListener('input', calculateSuggestedRent);
+    maintenanceCostInput.addEventListener('input', calculateSuggestedRent);
+    condoFeeInput.addEventListener('input', calculateSuggestedRent);
+    otherCostsInput.addEventListener('input', calculateSuggestedRent);
+});
