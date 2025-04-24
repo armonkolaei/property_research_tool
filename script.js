@@ -143,16 +143,23 @@ document.addEventListener('DOMContentLoaded', function () {
         // Calculate total monthly costs
         const totalMonthlyCosts = maintenanceCost + condoFee + (propertyTax / 12) + (renovationCost / 12) + otherCosts + monthlyPayment;
     
-        // Suggested rent with 10% profit margin
-        const suggestedRent = totalMonthlyCosts * 1.1;
+        // Suggested rent with 5% profit margin
+        const suggestedRent = totalMonthlyCosts * 1.05;
     
         // Update the suggested rent display
         suggestedRentSpan.textContent = suggestedRent.toFixed(2);
     
         // Update loan details
         loanAmountSpan.textContent = additionalFundsNeeded > 0
-            ? `You need an additional $${additionalFundsNeeded.toFixed(2)} to cover the remaining cost.\nPotential Borrowing Power: $${borrowingPower.toFixed(2)}\nRemaining Loan: $${totalLoanAmount.toFixed(2)}\nTotal Loan Amount (including refinancing): $${newTotalLoan.toFixed(2)}\nMonthly Payment: $${monthlyPayment.toFixed(2)}\nRental income should break you even.`
-            : `Loan Amount: $${propertyPrice.toFixed(2)} | Payment: $${monthlyPayment.toFixed(2)} per month.\nRental income should break you even.`;
+        ? `You need an additional $${additionalFundsNeeded.toFixed(2)} to cover the remaining cost.
+        Potential Borrowing Power: $${borrowingPower.toFixed(2)}
+        Remaining Loan: $${totalLoanAmount.toFixed(2)}
+        Total Loan Amount (including refinancing): $${newTotalLoan.toFixed(2)}
+        Monthly Payment: $${monthlyPayment.toFixed(2)}
+        Rental income should break you even.`
+        : `Loan Amount (property + remaining loan): $${(propertyPrice + totalLoanAmount).toFixed(2)}
+        Monthly Payment: $${monthlyPayment.toFixed(2)} per month.
+        Rental income should break you even.`;
     }    
 
     // Add event listeners to form inputs to calculate rent in real-time
