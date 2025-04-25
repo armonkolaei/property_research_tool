@@ -1,51 +1,119 @@
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    box-sizing: border-box;
 }
 
-main {
+.container {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header {
+h1 {
     text-align: center;
-    padding: 20px;
-    background-color: #0078d7;
-    color: white;
-    border-bottom: 4px solid #005a9e;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.8em;
-}
-
-section {
+.form-container {
     margin-bottom: 20px;
 }
 
-section h2 {
-    color: #333;
-    border-bottom: 2px solid #0078d7;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+label {
+    display: block;
+    margin-top: 10px;
 }
 
-ul {
-    padding-left: 20px;
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-ul li {
-    margin-bottom: 10px;
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-p {
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.property-form-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.property-form-container h2 {
+    text-align: center;
+}
+
+.property-form-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.property-form-container input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.property-form-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.property-form-container button:hover {
+    background-color: #0056b3;
+}
+
+.suggested-rent-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
 }
